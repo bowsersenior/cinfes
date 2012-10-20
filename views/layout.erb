@@ -12,7 +12,19 @@
 
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span9">
+          <%= yield %>
+        </div>
+        <div class="span3">
+          <%= erb :login_form %>
+        </div>
+      </div>
+    </div>
+
+
+
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

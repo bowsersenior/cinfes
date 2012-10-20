@@ -1,0 +1,18 @@
+<% if current_user %>
+  <h2>Hello <%= current_user.username %></h2>
+  <a href="/logout">Log out</a>
+<% else %>
+  <form action="login" method="POST">
+    <label>
+      Username
+      <input type="text" name="username">
+    </label>
+
+    <label>
+      Password
+      <input type="password" name="password">
+    </label>
+
+    <input type="submit" value="Login">
+  </form>
+<% end %>
