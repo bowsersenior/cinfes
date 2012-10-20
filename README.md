@@ -5,11 +5,15 @@
 
 ### Pages
 
-* Film info page
+* /           home page
+* /films      list of films, filtered by festival
+* /films/:id  film info page
     * interactive fan wall w/ pics, videos, etc.
     * tag w/ related movies, artists, genres, etc.
     * upload clips
     * add to schedule
     * buy tickets
-* Member profile page
+* /members        list of members
+* /members/:name  member info page
     * youtube, facebook, twitter integration
+* /festivals
