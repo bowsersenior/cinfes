@@ -48,6 +48,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.9)
@@ -74,5 +77,6 @@ DEPENDENCIES
   foreman
   heroku
   mongoid
+  racksh
   sinatra
   sinatra-contrib
