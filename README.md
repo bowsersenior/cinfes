@@ -28,3 +28,5 @@
 * Film info page
     * interactive fan wall w/ pics, videos, etc.
     * youtube, facebook, twitter integration
+
+* Member profile page
