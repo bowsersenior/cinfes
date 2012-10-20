@@ -2,6 +2,9 @@
 
 ## cinfes : film festivals for the 21st century
 
+
+### Features
+
 * For organizers:
     * Upload film info
     * Set schedule, ticket availability & prices
@@ -18,3 +21,10 @@
     * Buy tickets and get an ical-friendly schedule
     * Get reminders on scheduled showings & events
     * Get live notifications about impromptu events
+
+
+### Pages
+
+* Film info page
+    * interactive fan wall w/ pics, videos, etc.
+    * youtube, facebook, twitter integration
