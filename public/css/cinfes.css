@@ -1,0 +1,24 @@
+#sidebar .icon-chevron-right {
+  opacity: .25;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    opacity: 0.0;
+    font-size: 50%;
+    color: gray;
+  }
+  to {
+    opacity: 1.0;
+    font-size: 100%;
+    color: black;
+  }
+}
+
+.cinfes-logo {
+  -webkit-animation-name: pulse;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-duration: 2s;
+}
