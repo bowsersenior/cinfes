@@ -5,9 +5,9 @@
 
 ### Pages
 
-* /           home page
-* /films      list of films, filtered by festival
-* /films/:id  film info page
+* /               home page
+* /films/:query   list of films, filtered by query
+* /films/:id      film info page
     * interactive fan wall w/ pics, videos, etc.
     * tag w/ related movies, artists, genres, etc.
     * upload clips
