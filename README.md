@@ -13,6 +13,7 @@
     * upload clips
     * add to schedule
     * buy tickets
+	* dynamic twitter feed based on movie title
 * /members        list of members
 * /members/:name  member info page
     * youtube, facebook, twitter integration
