@@ -11,6 +11,5 @@
     * upload clips
     * add to schedule
     * buy tickets
-
 * Member profile page
     * youtube, facebook, twitter integration
