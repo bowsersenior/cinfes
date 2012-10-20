@@ -1,4 +1,6 @@
-cinfes
-======
+# cinfes
 
-cinfes : film festivals for the 21st century
+## cinfes : film festivals for the 21st century
+
+* For organizers:
+  * Upload film info
