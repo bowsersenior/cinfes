@@ -1,0 +1,8 @@
+<div class="notice hide" data-message="<%= message %>">
+<% content_for :js do %>
+  <script>
+    $(document).ready(function(){
+      toastr.success($('.notice').data('message'), 'Yo!')
+    });
+  </script>
+<% end %>

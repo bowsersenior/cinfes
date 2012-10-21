@@ -79,17 +79,19 @@ class Cinfes < Sinatra::Base
     u = find_user(params[:username])
     if u
       cookies[:current_user] = u.username
-      flash[:modal] = "Hi #{u.username}!"
+      flash[:notice] = "Hi #{u.username}!"
       flash[:just_logged_in] = true
     else
-      flash[:modal] = "Could not login #{params[:username]}!"
+      flash[:error] = "Could not login #{params[:username]}!"
     end
 
     redirect '/'
   end
 
   get '/logout' do
+    flash[:notice] = "Buh-bye #{current_user.username}!"
     cookies[:current_user] = nil
+
     redirect '/'
   end
 

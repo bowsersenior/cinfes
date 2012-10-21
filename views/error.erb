@@ -1,0 +1,8 @@
+<div class="error hide" data-message="<%= message %>">
+<% content_for :js do %>
+  <script>
+    $(document).ready(function(){
+      toastr.error($('.error').data('message'), 'Oops!')
+    });
+  </script>
+<% end %>

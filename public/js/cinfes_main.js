@@ -3,12 +3,9 @@ if (typeof window.CINFES === 'undefined') {
 }
 
 $(document).ready(function(){
-  $('.modal.show-on-domready').modal();
-
   $('.flip').click(function(){
       $(this).find('.card').toggleClass('flipped');
   });
-
 
   CINFES.socket = new Pusher('1368c91dfcb03dac81b3');
   CINFES.movie_channel = CINFES.socket.subscribe('movies');

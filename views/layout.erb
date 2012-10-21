@@ -30,8 +30,10 @@
         <%= yield %>
       </div>
 
-      <%= if flash[:modal]
-            erb :modal, :locals => {:message => flash[:modal]}
+      <%= if flash[:notice]
+            erb :notice, :locals => {:message => flash[:notice]}
+          elsif flash[:error]
+            erb :error, :locals => {:message => flash[:error]}
           end
       %>
     </div>
