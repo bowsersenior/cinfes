@@ -22,12 +22,9 @@
         <%= erb :login_form %>
       </div>
 
-
       <div class="row-fluid">
         <%= yield %>
       </div>
-
-
 
       <%= if flash[:notice]
             erb :notice, :locals => {:message => flash[:notice]}

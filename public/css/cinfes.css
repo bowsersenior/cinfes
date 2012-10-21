@@ -89,7 +89,12 @@
 }
 
 .nav .buttons {
-  margin-left: 6em;
+  margin-left: 7.5em;
+  padding: 0.5em;
+}
+
+.nav .buttons * {
+  line-height: 1.5em;
 }
 
 .login-form input[type=text], .login-form input[type=password] {

@@ -1,7 +1,9 @@
 <% if current_user %>
   <div class="buttons">
-    <a href="/logout" class="btn btn-primary">Log out</a>
-    <a href="/" class="btn">Home</a>
+    <a href="/logout" class="btn">Log out</a>
+    <a href="/" class="btn btn-success">
+      <i class="icon-home icon-large"></i>
+    </a>
   </div>
 <% else %>
   <form action="login" method="POST" class="input-prepend input-append login-form">
