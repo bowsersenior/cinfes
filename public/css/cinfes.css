@@ -28,10 +28,10 @@
 
 .flip {
   -webkit-perspective: 800;
-   width: 400px;
-   height: 200px;
-    position: relative;
-    margin: 50px auto;
+  width: 350px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
 }
 .flip .card.flipped {
   -webkit-transform: rotatey(-180deg);
@@ -63,13 +63,11 @@
 
 .movie-poster, .movie-info {
   width: 350px;
-  height: 500px;
   box-shadow: 10px 10px 10px #888;
 }
 
 .movie-info {
   padding: 0.5em;
-
   border: 2px solid black;
   border-radius: 6px;
 }
@@ -80,7 +78,21 @@
 
 #tweets {
   position: absolute;
-  top: 85px;
+  top: 45px;
   height: 500px;
   overflow: auto;
+}
+
+.nav {
+  width: 360px;
+  margin: 0 auto;
+}
+
+.nav .buttons {
+  margin-left: 6em;
+}
+
+.login-form input[type=text], .login-form input[type=password] {
+  height: 2.2em;
+  width: 7em;
 }

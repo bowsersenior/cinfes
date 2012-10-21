@@ -17,20 +17,16 @@
 
   <body>
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span4">
-          <%= erb :login_form %>
-        </div>
-
-        <div class="span8">
-
-        </div>
+      <div class="nav">
+        <%= erb :login_form %>
       </div>
 
 
       <div class="row-fluid">
         <%= yield %>
       </div>
+
+
 
       <%= if flash[:notice]
             erb :notice, :locals => {:message => flash[:notice]}
