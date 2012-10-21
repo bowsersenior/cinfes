@@ -49,8 +49,8 @@ class Cinfes < Sinatra::Base
     cookies[:current_user] = nil
     redirect '/'
   end
-  
-  get '/movie/1' do
+
+  get '/movies/1' do
     erb :movie
   end
 end
