@@ -100,13 +100,14 @@ h1.cinfes-name {
 
 }
 
-.buttons {
-  margin: 0 auto;
+.buttons .btn i {
+  line-height: 1.5em;
 }
+
 
 .login-form input[type=text], .login-form input[type=password] {
   height: 2.2em;
-  width: 7em;
+  width: 6em;
 }
 
 .movies {
