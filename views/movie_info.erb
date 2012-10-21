@@ -1,6 +1,14 @@
 <dl class="dl-horizontal">
   <% info.each do |field, value| %>
     <dt><%= field %></dt>
-    <dd><%= value %></dd>
+    <dd>
+      <% if field == 'imdbID' %>
+        <a href="http://www.imdb.com/title/<%= value %>">
+          <%= value %>
+        </a>
+      <% else %>
+        <%= value %>
+      <% end %>
+    </dd>
   <% end %>
 </dl>

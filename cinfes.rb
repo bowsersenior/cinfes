@@ -34,15 +34,15 @@ class Cinfes < Sinatra::Base
       @current_user ||= find_user(cookies[:current_user])
     end
 
-    def get_movie_info
-      s = <<-EOS
-        {"Title":"The Big Lebowski","Year":"1998","Rated":"R","Released":"06 Mar 1998","Runtime":"1 h 57 min","Genre":"Comedy, Crime","Director":"Joel Coen","Writer":"Ethan Coen, Joel Coen","Actors":"Jeff Bridges, John Goodman, Julianne Moore, Steve Buscemi","Plot":"'Dude' Lebowski, mistaken for a millionaire Lebowski, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTM5MjU5NTgxMF5BMl5BanBnXkFtZTYwMzY1NDg5._V1_SX300.jpg","imdbRating":"8.3","imdbVotes":"276,118","imdbID":"tt0118715","Response":"True"}
-      EOS
+    def get_movie_info(title)
+      s = HTTParty.get("http://www.omdbapi.com", :query => {:t => title})
 
       info = JSON.parse(s)
 
       poster = info.delete('Poster').match(/\/([^\/]+\.[a-zA-Z]+)$/).to_s
       poster = '/images/' + poster
+
+      info.delete('Response')
 
       flash[:movie_info]   = info
       flash[:movie_poster] = poster
@@ -87,8 +87,8 @@ class Cinfes < Sinatra::Base
     end
   end
 
-  get '/movies/1' do
-    get_movie_info
+  get '/movies/:title' do
+    get_movie_info( params[:title].gsub('-', '+') )
 
     erb :movie
   end
