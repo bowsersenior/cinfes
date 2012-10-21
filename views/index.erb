@@ -7,3 +7,15 @@
   </h1>
   <p>film festivals for the 21st century</p>
 </div>
+
+<ul class="thumbnails">
+  <% Dir['./public/images/*'].each do |img| %>
+    <% img.gsub!('/public', '') %>
+    <% id = img.match(/(?<id>[^\/]+)\.jpg/)[:id] %>
+    <li>
+      <a href="/movies?id=<%= id %>" class="thumbnail">
+        <img src="<%= img %>" alt="">
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -2,6 +2,7 @@ require 'sinatra/base'
 require "sinatra/cookies"
 require 'rack-flash'
 require 'sinatra/content_for'
+require "open-uri"
 
 require "mongoid"
 
@@ -19,6 +20,11 @@ class Cinfes < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  MOVIES = {
+    'tt0097576' => 'The Big Lebowski',
+
+  }
+
   enable :sessions
   use Rack::Flash
 
@@ -34,13 +40,23 @@ class Cinfes < Sinatra::Base
       @current_user ||= find_user(cookies[:current_user])
     end
 
-    def get_movie_info(title)
-      s = HTTParty.get("http://www.omdbapi.com", :query => {:t => title})
+    def get_movie_info(q)
+      s = HTTParty.get("http://www.omdbapi.com", :query => q)
 
       info = JSON.parse(s)
 
-      poster = info.delete('Poster').match(/\/([^\/]+\.[a-zA-Z]+)$/).to_s
-      poster = '/images/' + poster
+      poster_url = info.delete('Poster')
+      local_image = "./public/images/#{info['imdbID']}.jpg"
+
+      if !File.exists?(local_image)
+        open(poster_url) do |f|
+          File.open(local_image,"wb") do |file|
+            file.puts f.read
+          end
+        end
+      end
+
+      poster = local_image.gsub('./public', '')
 
       info.delete('Response')
 
@@ -87,8 +103,10 @@ class Cinfes < Sinatra::Base
     end
   end
 
-  get '/movies/:title' do
-    get_movie_info( params[:title].gsub('-', '+') )
+  get '/movies' do
+    title = (params[:title] || '').gsub('-', '+')
+    opts = {:t => title, :i => params[:id]}
+    get_movie_info(opts)
 
     erb :movie
   end
