@@ -41,7 +41,7 @@ class Cinfes < Sinatra::Base
 
       info = JSON.parse(s)
 
-      poster = info.delete('Poster')
+      poster = info.delete('Poster').match(/\/([^\/]+\.[a-zA-Z]+)$/).to_s
 
       flash[:movie_info]   = info
       flash[:movie_poster] = poster
