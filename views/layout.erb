@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Cinfes: film festivals for the 21st century</title>
+    <title>CinFes: film festivals for the 21st century</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,13 +17,22 @@
 
 
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <div class="container-fluid">
 
       <%= erb :login_form %>
       <div class="header <%= "just-logged-in" if flash[:just_logged_in]%>">
         <h1 class="cinfes-name">
           <small><i class="icon-film cinfes-logo"></i></small>
-          Cinfes
+          CinFes
           <small class="hidden-phone">film festivals for the 21st century</small>
         </h1>
       </div>

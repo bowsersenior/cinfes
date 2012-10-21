@@ -70,8 +70,10 @@ class Cinfes < Sinatra::Base
 
       info['Trailer'] = get_youtube_embed_url(info['Title'])
 
-      flash[:movie_info]   = info
-      flash[:movie_poster] = poster
+      flash[:movie_info]    = info
+      flash[:movie_poster]  = poster
+      flash[:hashtags]      = [ info['Title'].gsub(' ', ''), 'CinFes' ].join(',')
+      flash[:movie_hashtag] = info['Title'].gsub(' ', '')
     end
   end
 
