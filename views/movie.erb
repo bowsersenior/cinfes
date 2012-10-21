@@ -1,10 +1,10 @@
 <div class="flip">
   <div class="card">
     <div class="face front">
-      <img src="/images/star_wars.jpg">
+      <img class="movie-poster" src="<%= flash[:movie_poster] %>">
     </div>
-    <div class="face back">
-      Test synopsis
+    <div class="face back movie-info">
+      <%= erb :movie_info, :locals => {:info => flash[:movie_info]} %>
     </div>
   </div>
 </div>

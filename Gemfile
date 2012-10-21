@@ -6,6 +6,8 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "rack-flash3"
 
+gem "json"
+
 gem "mongoid"
 gem "racksh"
 
