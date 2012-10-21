@@ -8,6 +8,7 @@ gem "rack-flash3"
 
 gem "httparty"
 gem "json"
+gem "youtube_search"
 
 gem "mongoid"
 gem "racksh"

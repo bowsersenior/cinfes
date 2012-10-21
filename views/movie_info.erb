@@ -6,6 +6,10 @@
         <a href="http://www.imdb.com/title/<%= value %>">
           <%= value %>
         </a>
+      <% elsif field == 'Trailer'%>
+        <a href="<%= value %>" rel="lightbox[trailers]" class="btn btn-success trailer">
+          <i class="icon-play"></i>
+        </a>
       <% else %>
         <%= value %>
       <% end %>

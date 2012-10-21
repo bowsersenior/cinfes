@@ -14,16 +14,13 @@ end
 
 Mongoid.load!("db/mongoid.yml")
 
+require "youtube_search"
+
 class Cinfes < Sinatra::Base
   configure :development do
     require 'sinatra/reloader'
     register Sinatra::Reloader
   end
-
-  MOVIES = {
-    'tt0097576' => 'The Big Lebowski',
-
-  }
 
   enable :sessions
   use Rack::Flash
@@ -38,6 +35,17 @@ class Cinfes < Sinatra::Base
 
     def current_user
       @current_user ||= find_user(cookies[:current_user])
+    end
+
+    def get_youtube_trailers(title)
+      YoutubeSearch.search("#{title} trailers")
+    end
+
+    def get_youtube_embed_url(title)
+      video_id = get_youtube_trailers(title).select do |hsh|
+        hsh['embeddable']
+      end.first['video_id']
+      "http://www.youtube.com/embed/#{video_id}"
     end
 
     def get_movie_info(q)
@@ -59,6 +67,8 @@ class Cinfes < Sinatra::Base
       poster = local_image.gsub('./public', '')
 
       info.delete('Response')
+
+      info['Trailer'] = get_youtube_embed_url(info['Title'])
 
       flash[:movie_info]   = info
       flash[:movie_poster] = poster

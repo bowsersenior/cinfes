@@ -76,6 +76,7 @@ GEM
     thor (0.16.0)
     tilt (1.3.3)
     tzinfo (0.3.33)
+    youtube_search (0.1.6)
 
 PLATFORMS
   ruby
@@ -91,3 +92,4 @@ DEPENDENCIES
   racksh
   sinatra
   sinatra-contrib
+  youtube_search
