@@ -1,18 +1,23 @@
 <% if current_user %>
-  <h2>Hello <%= current_user.username %></h2>
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h2 class="alert-heading">Hello <%= current_user.username %></h2>
+  </div>
+
   <a href="/logout">Log out</a>
 <% else %>
-  <form action="login" method="POST">
-    <label>
-      Username
-      <input type="text" name="username">
-    </label>
+  <form action="login" method="POST" class="input-prepend input-append">
+    <span class="add-on">
+      <i class="icon-user"></i>
+    </span>
+    <input type="text" name="username" class="span6" placeholder="User name">
 
-    <label>
-      Password
-      <input type="password" name="password">
-    </label>
 
-    <input type="submit" value="Login">
+    <input type="password" name="password" class="span6" placeholder="Password">
+    <span class="add-on">
+      <i class="icon-key"></i>
+    </span>
+
+    <input type="submit" value="Login" class="btn btn-primary">
   </form>
 <% end %>
