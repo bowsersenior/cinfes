@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require "sinatra/cookies"
 require 'rack-flash'
+require 'sinatra/content_for'
 
 require "mongoid"
 
@@ -22,6 +23,7 @@ class Cinfes < Sinatra::Base
   use Rack::Flash
 
   helpers Sinatra::Cookies
+  helpers Sinatra::ContentFor
 
   helpers do
     def find_user(username)
@@ -48,6 +50,7 @@ class Cinfes < Sinatra::Base
     if u
       cookies[:current_user] = u.username
       flash[:modal] = "Hi #{u.username}!"
+      flash[:just_logged_in] = true
     else
       flash[:modal] = "Could not login #{params[:username]}!"
     end

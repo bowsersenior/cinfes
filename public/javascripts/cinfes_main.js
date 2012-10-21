@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  $('.modal.show-on-domready').modal();
+  $('.modal.show-on-domready').alert();
 });

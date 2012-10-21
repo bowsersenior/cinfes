@@ -1,7 +1,9 @@
 <div class="hero-unit">
   <h1>
     Cinfes
-    <i class="icon-film icon-large cinfes-logo"></i>
+    <span class="icon-container <%= "just-logged-in" if flash[:just_logged_in]%>">
+      <i class="icon-film icon-large cinfes-logo"></i>
+    </span>
   </h1>
   <p>film festivals for the 21st century</p>
 </div>

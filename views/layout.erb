@@ -27,10 +27,9 @@
         <%= yield %>
       </div>
 
-      <%=
-        if flash[:modal]
-          erb :modal, :locals => {:message => flash[:modal]}
-        end
+      <%= if flash[:modal]
+            erb :modal, :locals => {:message => flash[:modal]}
+          end
       %>
     </div>
 
@@ -41,5 +40,7 @@
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/javascripts/jquery.flip.min.js"></script>
     <script src="/javascripts/cinfes_main.js"></script>
+
+    <%= yield_content :js %>
   </body>
 </html>
