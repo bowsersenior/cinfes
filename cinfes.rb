@@ -5,7 +5,7 @@ require "mongoid"
 
 use Rack::Session::Cookie, :secret => 'add-ob-urt-of-pig-jerd-ap-jidd-up-hy'
 
-Dir["./app/**/*.rb"].each do |file|
+Dir["./models/**/*.rb"].each do |file|
   require_relative file
 end
 
@@ -48,6 +48,11 @@ class Cinfes < Sinatra::Base
   get '/logout' do
     cookies[:current_user] = nil
     redirect '/'
+  end
+
+  get '/members/:username' do
+    u = find_user(params[:username])
+    erb :member, :locals => {:member => u}
   end
 
   get '/movies/1' do
