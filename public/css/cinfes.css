@@ -1,21 +1,33 @@
-#sidebar .icon-chevron-right {
-  opacity: .25;
-}
-
 /* from:
      http://www.css3.com/moz-and-webkit-pulsing-animation-for-text-with-css3/
 */
 @-webkit-keyframes pulse {
   from {
     opacity: 0.0;
-    font-size: 50%;
+    font-size: 50em;
     color: white;
   }
   to {
     opacity: 1.0;
-    font-size: 100%;
+    font-size: 1.5em;
     color: black;
   }
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  clear: both;
+}
+
+h1.cinfes-name {
+  float: left;
+  padding: 5px;
+}
+
+.cinfes-logo {
+  font-size: 1.5em;
+  color: black;
 }
 
 .just-logged-in .cinfes-logo {
@@ -29,9 +41,8 @@
 .flip {
   -webkit-perspective: 800;
   width: 350px;
-  height: 600px;
   position: relative;
-  margin: 0 auto;
+  float: left;
 }
 .flip .card.flipped {
   -webkit-transform: rotatey(-180deg);
@@ -62,7 +73,6 @@
 }
 
 .movie-poster, .movie-info {
-  width: 350px;
   box-shadow: 10px 10px 10px #888;
 }
 
@@ -76,28 +86,29 @@
   height: 200px;
 }
 
+.content {
+  clear: left;
+  margin-bottom: 30px;
+}
+
 #tweets {
-  position: absolute;
-  top: 45px;
   height: 500px;
   overflow: auto;
+  float: left;
+  margin-right: 20px;
+  box-shadow: 10px 10px 10px #888;
+
 }
 
-.nav {
-  width: 360px;
+.buttons {
   margin: 0 auto;
-}
-
-.nav .buttons {
-  margin-left: 7.5em;
-  padding: 0.5em;
-}
-
-.nav .buttons * {
-  line-height: 1.5em;
 }
 
 .login-form input[type=text], .login-form input[type=password] {
   height: 2.2em;
   width: 7em;
+}
+
+.movies {
+  clear: both;
 }
