@@ -1,9 +1,4 @@
 <% if current_user %>
-  <div class="alert">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <h2 class="alert-heading">Hello <%= current_user.username %></h2>
-  </div>
-
   <a href="/logout">Log out</a>
 <% else %>
   <form action="login" method="POST" class="input-prepend input-append">

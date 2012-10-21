@@ -26,6 +26,12 @@
       <div class="row-fluid">
         <%= yield %>
       </div>
+
+      <%=
+        if flash[:modal]
+          erb :modal, :locals => {:message => flash[:modal]}
+        end
+      %>
     </div>
 
 

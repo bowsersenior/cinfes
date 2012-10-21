@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require "sinatra/cookies"
+require 'rack-flash'
 
 require "mongoid"
 
@@ -16,6 +17,9 @@ class Cinfes < Sinatra::Base
     require 'sinatra/reloader'
     register Sinatra::Reloader
   end
+
+  enable :sessions
+  use Rack::Flash
 
   helpers Sinatra::Cookies
 
@@ -41,7 +45,13 @@ class Cinfes < Sinatra::Base
 
   post '/login' do
     u = find_user(params[:username])
-    cookies[:current_user] = u.username if u
+    if u
+      cookies[:current_user] = u.username
+      flash[:modal] = "Hi #{u.username}!"
+    else
+      flash[:modal] = "Could not login #{params[:username]}!"
+    end
+
     redirect '/'
   end
 
@@ -52,7 +62,12 @@ class Cinfes < Sinatra::Base
 
   get '/members/:username' do
     u = find_user(params[:username])
-    erb :member, :locals => {:member => u}
+    if u
+      erb :member, :locals => {:member => u}
+    else
+      flash[:notice] = "No member with username: #{params[:username]}!"
+      redirect '/'
+    end
   end
 
   get '/movies/1' do

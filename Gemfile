@@ -1,9 +1,11 @@
 source :rubygems
 
-ruby '1.9.3'
+ruby "1.9.3"
 
 gem "sinatra"
 gem "sinatra-contrib"
+gem "rack-flash3"
+
 gem "mongoid"
 gem "racksh"
 
