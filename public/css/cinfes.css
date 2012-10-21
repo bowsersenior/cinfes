@@ -113,3 +113,8 @@ h1.cinfes-name {
 .movies {
   clear: both;
 }
+
+#social {
+  position: relative;
+  left: 20px;
+}
