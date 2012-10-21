@@ -8,3 +8,13 @@
     </div>
   </div>
 </div>
+
+<% content_for :js do %>
+  <script>
+    $(document).ready(function(){
+      src = $('.movie-poster').attr('src');
+      $('.movie-poster').attr('src', '');
+      $('.movie-poster').attr('src', src);
+    })
+  <script>
+<% end %>
