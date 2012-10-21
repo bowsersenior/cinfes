@@ -77,3 +77,10 @@
 .thumbnails li img{
   height: 200px;
 }
+
+#tweets {
+  position: absolute;
+  top: 85px;
+  height: 500px;
+  overflow: auto;
+}

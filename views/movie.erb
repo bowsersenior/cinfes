@@ -8,3 +8,21 @@
     </div>
   </div>
 </div>
+
+
+<div id="tweets" class="hidden-phone span3">
+
+</div>
+
+<% content_for :js do %>
+  <script>
+    jQuery(function($){
+      $("#tweets").tweet({
+        avatar_size: 32,
+        count: 8,
+        query: "<%= flash[:movie_info]['Title'] %>",
+        loading_text: "searching twitter..."
+      });
+    });
+  </script>
+<% end %>
