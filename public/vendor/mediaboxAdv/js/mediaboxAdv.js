@@ -106,7 +106,7 @@ var Mediabox;
 				clickBlock: true,				// Adds an event on right-click to block saving of images from the context menu in most browsers (this can't prevent other ways of downloading, but works as a casual deterent)
 								// due to less than ideal code ordering, clickBlock on links must be removed manually around line 250
 //			iOS device options
-//				iOSenable: false,				// When set to false, disables overlay entirely (links open in new tab)
+				iOSenable: false,				// When set to false, disables overlay entirely (links open in new tab)
 												// IMAGES and INLINE content will display normally,
 												// while ALL OTHER content will display a direct link (this is required so as to not break mixed-media galleries)
 				iOShtml: true,					// If set to true, HTML content is displayed normally as well (useful if your HTML content is minimal and UI oriented instead of external sites)
@@ -342,11 +342,11 @@ var Mediabox;
 
 	function changeMedia(mediaIndex) {
 		if (mediaIndex >= 0) {
-//			if (Browser.Platform.ios && !options.iOSenable) {
-//				window.open(mediaArray[mediaIndex][0], "_blank");
-//				close();
-//				return false;
-//			}
+      if (Browser.Platform.ios && !options.iOSenable) {
+        window.open(mediaArray[mediaIndex][0], "_blank");
+        close();
+        return false;
+      }
 			media.set('html', '');
 			activeMedia = mediaIndex;
 			prevMedia = ((activeMedia || !options.loop) ? activeMedia : mediaArray.length) - 1;
