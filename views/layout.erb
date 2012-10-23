@@ -29,6 +29,7 @@
     <div class="container-fluid">
 
       <%= erb :login_form %>
+
       <div class="header <%= "just-logged-in" if flash[:just_logged_in]%>">
         <h1 class="cinfes-name">
           <small><i class="icon-film cinfes-logo"></i></small>
@@ -47,6 +48,8 @@
             erb :error, :locals => {:message => flash[:error]}
           end
       %>
+
+      <%= erb :about %>
     </div>
 
 
