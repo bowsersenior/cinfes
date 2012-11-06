@@ -117,4 +117,6 @@ h1.cinfes-name {
 #social {
   position: relative;
   left: 20px;
+  text-align: center;
+  float: left;
 }
