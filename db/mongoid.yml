@@ -1,10 +1,10 @@
 production:
-  sessions:
+  clients:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
 
 development:
-  sessions:
+  clients:
     default:
       database: mongoid
       hosts:
