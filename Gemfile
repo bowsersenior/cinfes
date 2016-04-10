@@ -1,6 +1,6 @@
-source :rubygems
+source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby "2.3.0"
 
 gem "sinatra"
 gem "sinatra-contrib"
@@ -14,7 +14,6 @@ gem "mongoid"
 gem "racksh"
 
 group :development do
-  gem "heroku"
   gem "foreman"
-  gem "debugger"
+  gem "byebug"
 end
