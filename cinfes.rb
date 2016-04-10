@@ -14,7 +14,15 @@ end
 
 Mongoid.load!("db/mongoid.yml")
 
-require "youtube_search"
+require "yt"
+
+if ! ENV['YOUTUBE_API_KEY'].is_a?(String)
+  abort "YOUTUBE_API_KEY env var is missing!"
+end
+
+Yt.configure do |config|
+  config.api_key = ENV['YOUTUBE_API_KEY']
+end
 
 class Cinfes < Sinatra::Base
   configure :development do
@@ -38,20 +46,22 @@ class Cinfes < Sinatra::Base
     end
 
     def get_youtube_trailers(title)
-      YoutubeSearch.search("#{title} trailers")
+      videos = Yt::Collections::Videos.new
+      query  = "#{title} trailers"
+
+      videos.where(q: query)
     end
 
     def get_youtube_embed_url(title)
-      video_id = get_youtube_trailers(title).select do |hsh|
-        hsh['embeddable']
-      end.first['video_id']
+      video_id = get_youtube_trailers(title).first.id
+
       "http://www.youtube.com/embed/#{video_id}"
     end
 
     def get_movie_info(q)
-      s = HTTParty.get("http://www.omdbapi.com", :query => q)
+      response = HTTParty.get("http://www.omdbapi.com", :query => q)
 
-      info = JSON.parse(s)
+      info = JSON.parse(response.body)
 
       poster_url = info.delete('Poster')
       local_image = "./public/images/#{info['imdbID']}.jpg"

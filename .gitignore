@@ -21,3 +21,4 @@ doc/
 .ruby*
 
 .DS_Store
+.byebug*

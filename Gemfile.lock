@@ -58,7 +58,8 @@ GEM
     tilt (2.0.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    youtube_search (0.2.0)
+    yt (0.25.29)
+      activesupport
 
 PLATFORMS
   ruby
@@ -73,7 +74,7 @@ DEPENDENCIES
   racksh
   sinatra
   sinatra-contrib
-  youtube_search
+  yt
 
 BUNDLED WITH
    1.11.2
