@@ -7,7 +7,11 @@ $(document).ready(function(){
       $(this).find('.card').toggleClass('flipped');
   });
 
-  CINFES.socket = new Pusher('1368c91dfcb03dac81b3');
+  var pusher = new Pusher('8fdad0b2707f61567c4a', {
+    encrypted: true
+  });
+
+  CINFES.socket = pusher;
   CINFES.movie_channel = CINFES.socket.subscribe('movies');
 
   CINFES.movie_channel.bind('notification', function(data) {
