@@ -49,7 +49,14 @@ class Cinfes < Sinatra::Base
       videos = Yt::Collections::Videos.new
       query  = "#{title} trailers"
 
-      videos.where(q: query)
+      # see:
+      #   https://developers.google.com/youtube/v3/docs/search/list#parameters
+      videos.where({
+        q: query,
+        maxResults: 25,
+        videoCategoryId: 44,  # ID for Trailers
+        type: 'video'         # required when 'videoCategoryId' used
+      })
     end
 
     def get_youtube_embed_url(title)
@@ -128,8 +135,20 @@ class Cinfes < Sinatra::Base
   end
 
   get '/movies' do
-    title = (params[:title] || '').gsub('-', '+')
-    opts = {:t => title, :i => params[:id]}
+    title = if params[:title]
+      params[:title].gsub('-', '+')
+    else
+      nil
+    end
+
+    opts = {}
+
+    if title
+      opts['t'] = title
+    elsif params[:id]
+      opts['i'] = params[:id]
+    end
+
     get_movie_info(opts)
 
     erb :movie
