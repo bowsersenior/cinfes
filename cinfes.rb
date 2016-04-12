@@ -46,23 +46,45 @@ class Cinfes < Sinatra::Base
     end
 
     def get_youtube_trailers(title)
-      videos = Yt::Collections::Videos.new
-      query  = "#{title} trailers"
-
       # see:
       #   https://developers.google.com/youtube/v3/docs/search/list#parameters
-      videos.where({
-        q: query,
+      trailers_category =  Yt::Collections::Videos.new.where({
+        q: title,
         maxResults: 25,
         videoCategoryId: 44,  # ID for Trailers
         type: 'video'         # required when 'videoCategoryId' used
       })
+
+      other_category =  Yt::Collections::Videos.new.where({
+        q: "#{title} official trailer",
+        maxResults: 25
+      })
+
+      trailer_vault_videos =  Yt::Collections::Videos.new.where({
+        q: title,
+        channelId: 'UCTCjFFoX1un-j7ni4B6HJ3Q'
+      })
+
+      trailer_vault_videos.map{|v| v} +
+        trailers_category.map{|v| v}  +
+        other_category.map{|v| v}
     end
 
     def get_youtube_embed_url(title)
-      video_id = get_youtube_trailers(title).first.id
+      trailer = get_youtube_trailers(title).find do |video|
+        video.title =~ /^#{title.downcase}/i &&
+          (
+            video.title.downcase.include?('trailer') ||
+            video.title.downcase.include?('preview')
+          )
+      end
 
-      "http://www.youtube.com/embed/#{video_id}"
+      if trailer
+        "http://www.youtube.com/embed/#{trailer.id}"
+      else
+
+        nil
+      end
     end
 
     def get_movie_info(q)
@@ -71,6 +93,11 @@ class Cinfes < Sinatra::Base
       info = JSON.parse(response.body)
 
       poster_url = info.delete('Poster')
+
+      if ! poster_url
+        return nil
+      end
+
       local_image = "./public/images/#{info['imdbID']}.jpg"
 
       if !File.exists?(local_image)
@@ -149,9 +176,12 @@ class Cinfes < Sinatra::Base
       opts['i'] = params[:id]
     end
 
-    get_movie_info(opts)
-
-    erb :movie
+    if get_movie_info(opts)
+      erb :movie
+    else
+      status 404
+      "Couldn't find data for params: #{params}"
+    end
   end
 
 end
