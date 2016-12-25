@@ -4,15 +4,7 @@ require 'rack-flash'
 require 'sinatra/content_for'
 require "open-uri"
 
-require "mongoid"
-
 use Rack::Session::Cookie, :secret => 'add-ob-urt-of-pig-jerd-ap-jidd-up-hy'
-
-Dir["./models/**/*.rb"].each do |file|
-  require_relative file
-end
-
-Mongoid.load!("db/mongoid.yml")
 
 require "yt"
 
@@ -22,6 +14,14 @@ end
 
 Yt.configure do |config|
   config.api_key = ENV['YOUTUBE_API_KEY']
+end
+
+class User
+  attr_accessor :username
+
+  def initialize(opts)
+    self.username = opts[:username]
+  end
 end
 
 class Cinfes < Sinatra::Base
@@ -38,7 +38,13 @@ class Cinfes < Sinatra::Base
 
   helpers do
     def find_user(username)
-      User.where(:username => username).first
+      u = if username == ENV['CINFES_BOSS_USERNAME']
+        username
+      else
+        "Unknown user"
+      end
+
+      User.new(:username => u)
     end
 
     def current_user

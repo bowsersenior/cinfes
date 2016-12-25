@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.3.0"
+ruby "2.3.1"
 
 gem "sinatra"
 gem "sinatra-contrib"
@@ -10,8 +10,9 @@ gem "httparty"
 gem "json"
 gem "yt"
 
-gem "mongoid"
 gem "racksh"
+
+gem "unicorn"
 
 group :development do
   gem "foreman"

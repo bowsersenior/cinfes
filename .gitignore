@@ -22,3 +22,5 @@ doc/
 
 .DS_Store
 .byebug*
+
+.env
