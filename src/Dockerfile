@@ -1,4 +1,5 @@
-# http://blog.kontena.io/dockerizing-ruby-application/
+# adapted from:
+#   http://blog.kontena.io/dockerizing-ruby-application/
 
 FROM ruby:2.3.1-alpine
 ADD Gemfile /app/
