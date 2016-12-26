@@ -12,4 +12,10 @@ readonly DOCKER_CONTAINER="$2"
 readonly ENV_FILE="$3"
 readonly PORT_MAPPING="$4"
 
-docker run --detach --name "$DOCKER_CONTAINER" --publish "$PORT_MAPPING" --env-file "$ENV_FILE" "$DOCKER_TAG"
+docker run                    \
+  --detach                    \
+  --restart=always            \
+  --name "$DOCKER_CONTAINER"  \
+  --publish "$PORT_MAPPING"   \
+  --env-file "$ENV_FILE"      \
+  "$DOCKER_TAG"

@@ -74,4 +74,5 @@ scp -r "$LOCAL_DOCKERFILE_PATH" "$SCP_CONN":"$DEPLOY_DOCKERFILE_PATH"
 
 log "build docker image & run"
 ssh "$SCP_CONN" -C "$DEPLOY_PATH/shared/deploy/build-container.sh $DOCKER_TAG $DEPLOY_RELEASE_CURRENT_SYMLINK/src && \
-     $DEPLOY_PATH/shared/deploy/run-container.sh $DOCKER_TAG $APP_NAME $DEPLOY_DOT_ENV_FILE 9292:9292"
+    $DEPLOY_PATH/shared/deploy/stop-container.sh "${APP_NAME}" && \
+    $DEPLOY_PATH/shared/deploy/run-container.sh $DOCKER_TAG $APP_NAME $DEPLOY_DOT_ENV_FILE 9292:9292"
