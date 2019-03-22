@@ -12,6 +12,11 @@ if ! ENV['YOUTUBE_API_KEY'].is_a?(String)
   abort "YOUTUBE_API_KEY env var is missing!"
 end
 
+if ! ENV['OMDB_API_KEY'].is_a?(String)
+  abort "OMDB_API_KEY env var is missing!"
+end
+
+
 Yt.configure do |config|
   config.api_key = ENV['YOUTUBE_API_KEY']
 end
@@ -94,7 +99,8 @@ class Cinfes < Sinatra::Base
     end
 
     def get_movie_info(q)
-      response = HTTParty.get("http://www.omdbapi.com", :query => q)
+      query_with_apikey = q.merge('apikey' => ENV['OMDB_API_KEY'])
+      response = HTTParty.get("http://www.omdbapi.com", :query => query_with_apikey)
 
       info = JSON.parse(response.body)
 
